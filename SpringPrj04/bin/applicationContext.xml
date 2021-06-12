@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   <!-- OracleDAO 클래스에 대한 객체 생성 부분 -->
+   <bean id="oracleDAO" class="com.test.spr.OracleDAO"></bean>
+   
+   <!-- MssqlDAO 클래스에 대한 객체 생성 부분 -->
+   <bean id="mssqlDAO" class="com.test.spr.MssqlDAO"></bean>
+   
+   
+   <!-- MemberList 클래스에 대한 객체 생성 및 의존성 주입 부분 -->
+   <!-- IDAO 타입으로 구멍 뻥~ 뚫어놓은 상태 -->
+   <bean id="member" class="com.test.spr.MemberList">
+   
+      <!-- 속성의 이름에 따른 setter 메소드 호출을 통한 DI 처리 부분 -->
+      <property name="dao">
+         <!--  <ref bean="oracleDAO" /> -->
+         <ref bean="mssqlDAO"/>
+      </property>
+      
+      
+   
+   </bean>
+   
+</beans>
